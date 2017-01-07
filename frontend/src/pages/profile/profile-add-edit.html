@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title *ngIf="!profil.id">Hinzufügen</ion-title>
+    <ion-title *ngIf="profil.id">Bearbeiten</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only color="royal" (click)="delete($event)" *ngIf="profil.id">
+        <ion-icon name="trash"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="save($event)">
+        <ion-icon name="checkmark"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label>Name</ion-label>
+      <ion-input type="text" [(ngModel)]="profil.name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Farbe</ion-label>
+      <ion-select [(ngModel)]="profil.farbe">
+        <ion-option value="green">Grün</ion-option>
+        <ion-option value="blue">Blau</ion-option>
+        <ion-option value="orange">Orange</ion-option>
+        <ion-option value="red">Rot</ion-option>
+    </ion-select>
+    </ion-item>
+  </ion-list>
+</ion-content>

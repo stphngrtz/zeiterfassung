@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Zeiterfassung</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only color="royal" (click)="reload($event, true)">
+        <ion-icon name="refresh"></ion-icon>
+      </button>
+      <button ion-button icon-only color="royal" (click)="add($event)">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <button ion-item *ngFor="let zeit of zeiten" (click)="edit($event, zeit)">
+      <h2>{{zeit.getStunden()}} Stunden</h2>
+      <h3>{{zeit.von | date:'dd.MM.yyyy'}} {{zeit.von | date:'HH:mm'}} - {{zeit.bis | date:'HH:mm'}}</h3>
+      <p>{{zeit.bemerkung}}</p>
+      <ion-badge color="{{getProfil(zeit).farbe}}" item-right>{{getProfil(zeit).name}}</ion-badge>
+    </button>
+  </ion-list>
+</ion-content>

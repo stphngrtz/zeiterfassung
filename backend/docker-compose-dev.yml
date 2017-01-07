@@ -1,0 +1,19 @@
+version: '2'
+services:
+  mongo:
+    image: "mongo"
+    volumes:
+      - ./data:/data/db
+  mongoexpress:
+    image: "mongo-express"
+    ports:
+      - "8081:8081"
+    links:
+      - mongo:mongo
+  zeiterfassung:
+    image: "zeiterfassung"
+    ports:
+      - "4567:4567"
+    links:
+      - mongo:mongo
+    command: --db-host mongo

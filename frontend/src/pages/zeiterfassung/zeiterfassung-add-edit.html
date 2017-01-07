@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title *ngIf="!zeit.id">Hinzufügen</ion-title>
+    <ion-title *ngIf="zeit.id">Bearbeiten</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only color="royal" (click)="delete($event)" *ngIf="zeit.id">
+        <ion-icon name="trash"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="save($event)">
+        <ion-icon name="checkmark"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label>Profil</ion-label>
+      <ion-select [(ngModel)]="zeit.profilId">
+        <ion-option *ngFor="let profil of profile" value="{{profil.id}}">{{profil.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Datum</ion-label>
+      <ion-datetime displayFormat="DD.MM.YYYY" min="2016" max="2020" [(ngModel)]="datum"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Von</ion-label>
+      <ion-datetime displayFormat="HH:mm" pickerFormat="HH mm" [(ngModel)]="von"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Bis</ion-label>
+      <ion-datetime displayFormat="HH:mm" pickerFormat="HH mm" [(ngModel)]="bis"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Bemerkung</ion-label>
+      <ion-textarea [(ngModel)]="zeit.bemerkung"></ion-textarea>
+    </ion-item>
+  </ion-list>
+</ion-content>

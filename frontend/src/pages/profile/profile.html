@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Profile</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only color="royal" (click)="reload($event, true)">
+        <ion-icon name="refresh"></ion-icon>
+      </button>
+      <button ion-button icon-only color="royal" (click)="add($event)">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <button ion-item *ngFor="let profil of profile" (click)="edit($event, profil)">
+      <h2>{{profil.name}}</h2>
+      <ion-badge color="{{profil.farbe}}" item-right>{{profil.farbe}}</ion-badge>
+    </button>
+  </ion-list>
+</ion-content>
