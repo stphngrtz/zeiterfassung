@@ -98,7 +98,10 @@ $ sudo docker run -d \
 In den Einstellungen muss als URL der public DNS Name der EC2 Instanz eingetragen werden. Anschließend sollte das Frontend wie erwartet mit dem Backend kommunizieren können.
 
 ### Frontend aufs Handy übertragen
+
+#### iOS
 ```
+ionic platform add ios
 ionic resources
 ionic build ios
 ```
@@ -110,3 +113,29 @@ Kurzform:
 - Beim Projekt unter General > Signing das Personal Team auswählen
 - Neben dem Run Button das Handy als Device auswählen
 - Run!
+
+#### Android
+```
+ionic platform add android
+ionic resources
+ionic run android --device
+```
+
+Das Handy muss via USB verbunden sein, der Entwickler Modus sowie USB-Debugging muss aktiviert sein. Darüber hinaus muss natürlich das Android SDK (24) installiert sein.
+
+Den Entwickler Modus auf dem Handy aktiviert man, indem man in den Einstellungen bzw. Geräteinformationen die Buildnummer 7x antippt. Nach 2-3x antippen sollte sich eine Information darüber einblenden, wie oft man noch tippen muss, um den Entwickler Modus zu aktivieren.
+
+Bei erfolgreich aktiviertem Entwickler Modus sowie installiertem Android SDK schreibt der folgende Befehl ein Device aus.
+```
+> adb devices
+```
+
+Aktuell gibt es anscheinend ein Problem bei den Ressourcen für die Android Plattform. Siehe https://github.com/driftyco/ionic-cli/issues/1166
+
+Folgendes hat bei mir geholfen:
+```
+> ionic platform rm android
+> ionic platform add https://github.com/apache/cordova-android.git#master
+> ionic resources --icon
+> ionic run android --device
+```
