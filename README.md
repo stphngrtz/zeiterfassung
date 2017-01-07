@@ -116,9 +116,9 @@ Kurzform:
 
 #### Android
 ```
-ionic platform add android
-ionic resources
-ionic run android --device
+> ionic platform add android
+> ionic resources
+> ionic run android --device
 ```
 
 Das Handy muss via USB verbunden sein, der Entwickler Modus sowie USB-Debugging muss aktiviert sein. Darüber hinaus muss natürlich das Android SDK (24) installiert sein.
