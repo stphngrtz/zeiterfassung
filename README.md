@@ -88,7 +88,7 @@ $ sudo docker run -d \
     zeiterfassung-backend --db-host mongo
 ```
 
-### Frontend bauen und ausprobieren
+## Frontend bauen und ausprobieren
 ```
 > rm -r node_modules/*
 > rm -r www/*

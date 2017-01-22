@@ -34,6 +34,14 @@
       <ion-datetime displayFormat="HH:mm" pickerFormat="HH mm" [(ngModel)]="bis"></ion-datetime>
     </ion-item>
     <ion-item>
+      <ion-label>Typ</ion-label>
+      <ion-select [(ngModel)]="zeit.typ">
+        <ion-option value="ARBEIT">Arbeit</ion-option>
+        <ion-option value="URLAUB">Urlaub</ion-option>
+        <ion-option value="KRANK">Krank</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
       <ion-label>Bemerkung</ion-label>
       <ion-textarea [(ngModel)]="zeit.bemerkung"></ion-textarea>
     </ion-item>

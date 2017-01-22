@@ -21,7 +21,7 @@ export class ZeitenProvider {
     return this.run((resolve, reject, url, options) => {
       this.http.get(url + '/zeiten', options)
         .map(res => res.json())
-        .map(data => data.map(d => new Zeit(d.id, new Date(d.von), new Date(d.bis), d.bemerkung, d.profilId)))
+        .map(data => data.map(d => new Zeit(d.id, new Date(d.von), new Date(d.bis), d.typ, d.bemerkung, d.profilId)))
         .subscribe(data => {
           this.data = data;
           this.data.sort((a,b) => b.von.valueOf() - a.von.valueOf());
@@ -36,7 +36,7 @@ export class ZeitenProvider {
     return this.run((resolve, reject, url, options) => {
       this.http.post(url + '/zeiten', JSON.stringify(zeit), options)
         .map(res => res.json())
-        .map(data => new Zeit(data.id, new Date(data.von), new Date(data.bis), data.bemerkung, data.profilId))
+        .map(data => new Zeit(data.id, new Date(data.von), new Date(data.bis), data.typ, data.bemerkung, data.profilId))
         .subscribe(data => {
           this.data.push(data);
           this.data.sort((a,b) => b.von.valueOf() - a.von.valueOf());

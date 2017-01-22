@@ -2,13 +2,15 @@ export class Zeit {
   id: string;
   von: Date;
   bis: Date;
+  typ: string;
   bemerkung: string;
   profilId: string;
 
-  constructor(id: string, von:Date, bis:Date, bemerkung:string, profilId:string) {
+  constructor(id: string, von:Date, bis:Date, typ:string, bemerkung:string, profilId:string) {
     this.id = id;
     this.von = von;
     this.bis = bis;
+    this.typ = typ;
     this.bemerkung = bemerkung;
     this.profilId = profilId;
   }
@@ -16,6 +18,10 @@ export class Zeit {
   isValid(f): boolean {
     if (!(this.profilId && this.profilId.length > 0)) {
       f("Profil fehlt!");
+      return false;
+    }
+    if (!(this.typ && this.typ.length > 0)) {
+      f("Typ fehlt!");
       return false;
     }
     if (!(this.von instanceof Date && !isNaN(this.von.valueOf()))) {
@@ -46,5 +52,13 @@ export class Zeit {
       return 0.5;
 
     return 0.75;
+  }
+
+  isKrank() {
+    return this.typ == 'KRANK';
+  }
+
+  isUrlaub() {
+    return this.typ == 'URLAUB';
   }
 }

@@ -15,6 +15,8 @@
 <ion-content padding>
   <ion-list>
     <button ion-item *ngFor="let zeit of zeiten" (click)="edit($event, zeit)">
+      <ion-icon *ngIf="zeit.isKrank()" name="medkit" item-left></ion-icon>
+      <ion-icon *ngIf="zeit.isUrlaub()" name="plane" item-left></ion-icon>
       <h2>{{zeit.getStunden()}} Stunden</h2>
       <h3>{{zeit.von | date:'dd.MM.yyyy'}} {{zeit.von | date:'HH:mm'}} - {{zeit.bis | date:'HH:mm'}}</h3>
       <p>{{zeit.bemerkung}}</p>

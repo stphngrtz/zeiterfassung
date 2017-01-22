@@ -60,7 +60,7 @@ export class ZeiterfassungPage {
     }
     else {
       this.navCtrl.push(ZeiterfassungAddEditPage, {
-        zeit: new Zeit("", new Date(), new Date(), "", this.profile.length == 1 ? this.profile[0].id : "")
+        zeit: new Zeit("", new Date(), new Date(), "ARBEIT", "", this.profile.length == 1 ? this.profile[0].id : "")
       });
     }
   }
